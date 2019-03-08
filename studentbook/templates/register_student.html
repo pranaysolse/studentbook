@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+	{% block head %}
+		{{super()}}
+	<link rel="stylesheet" type="text/css" href="/static/style_register.css">	
+	{% endblock %}
+{% block body %}
+	<header>
+		<div class="main">
+			<div class="logo">
+				<img src="/static/images/Logo.png">
+			</div>
+			<ul>
+				<li><a href="http://localhost:5000/">Home</a></li>
+				<li><a href="http://localhost:5000/about">About</a></li>
+				<li><a href="http://localhost:5000/contact">Contact Us</a></li>
+				<li><a href="http://localhost:5000/login">Login</a></li>
+			</ul>
+		</div>
+	</header>
+	<footer>
+		<div class="content-section">
+			<form method="POST" action="">
+					{{ form.hidden_tag()}}
+					<div class="form-group row" method="POST" >
+			  			{{ form.name.label(class="col-2 col-form-label" , for="example-text-input" ) }}
+				  			<div class="col-5" >
+				    			{{ form.name(class="form-control" , required="required", id="example-text-input" ) }}
+				  			</div>
+					</div>
+					<div class="form-group row">
+			  			{{ form.rollno.label(class="col-2 col-form-label" , for="example-text-input" ) }}
+				  			<div class="col-5">
+				    			{{ form.rollno(class="form-control" , id="example-text-input" ) }}
+				  			</div>
+					</div>
+					<div class="form-group row">
+			  			{{ form.div.label(class="col-2 col-form-label" , for="example-text-input" ) }}
+				  			<div class="col-5">
+				    			{{ form.div(class="form-control" , id="example-text-input" ) }}
+				  			</div>
+					</div>
+					<div class="form-group row">
+			  			{{ form.class_st.label(class="col-2 col-form-label" , for="example-text-input" ) }}
+				  			<div class="col-5">
+				    			{{ form.class_st(class="form-control" , id="example-text-input" ) }}
+				  			</div>
+					</div>
+					<div class="form-group row">
+			  			{{ form.branch.label(class="col-2 col-form-label" , for="example-text-input" ) }}
+				  			<div class="col-5">
+				    			{{ form.branch(class="form-control" , id="example-text-input" ) }}
+				  			</div>
+					</div>
+					<div class="form-group row">
+			  			{{ form.mob.label(class="col-2 col-form-label" , for="example-text-input" ) }}
+				  			<div class="col-5">
+				    			{{ form.mob(class="form-control" , id="example-text-input" ) }}
+				  			</div>
+					</div>
+					<div class="form-group row">
+			  			{{ form.email.label(class="col-2 col-form-label" , for="example-text-input" ) }}
+				  			<div class="col-5">
+				    			{{ form.email(class="form-control" , id="example-text-input" ) }}
+				  			</div>
+					</div>
+					<div class="form-group row">
+			  			{{ form.add.label(class="col-2 col-form-label" , for="example-text-input" ) }}
+				  			<div class="col-5">
+				    			{{ form.add(class="form-control" , id="example-text-input" ) }}
+				  			</div>
+					</div>
+					<div class="form-group row">
+			  			{{ form.username.label(class="col-2 col-form-label" , for="example-text-input" ) }}
+				  			<div class="col-5">
+				    			{{ form.username(class="form-control" , id="example-text-input" ) }}
+				  			</div>
+					</div>
+					<div class="form-group row">
+			  			{{ form.password.label(class="col-2 col-form-label" , for="example-text-input" ) }}
+				  			<div class="col-5">
+				    			{{ form.password(class="form-control" , id="example-text-input" ) }}
+				  			</div>
+					</div>
+					<div class="form-group row">
+			  			{{ form.confirm_pass.label(class="col-2 col-form-label" , for="example-text-input" )}}
+				  			<div class="col-5" class="form-group">
+				    			{{ form.confirm_pass(class="form-control" , id="example-text-input" ) }}
+				  			</div>
+					</div>
+					<div class="form-group row">
+					{{ form.submit(class="btn btn-outline-info" , href=" {{ url_for('home')}}") }}
+					</div>
+				</form>
+		</div>
+	</footer>
+	<div class="border-top pt-3">
+		<small class="text-muted">
+		 	(* Mandatory fields ) &nbsp;&nbsp;		
+			Already Have An Account? <a href="{{ url_for('login') }}" class="ml-2">Sign in</a>
+		</small>
+	</div>	
+{% endblock %}

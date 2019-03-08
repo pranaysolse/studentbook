@@ -1,0 +1,67 @@
+*{
+	margin: 0 ;
+	padding: 0;
+	font-family: Century Gothic;
+}
+
+header{
+	background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(images/background.jpg);
+	height: 17vh;
+	background-size: cover;
+	background-position: center;
+}
+
+ul{
+	float: right;
+	list-style-type: none;
+	margin-top: 30px;
+}
+
+ul li{
+	display: inline-block;
+
+}
+
+ul li a{
+	text-decoration: none;
+	color: #fff;
+	padding: 5px 20px;
+	border: 1px solid transparent;
+	transition: 0.6s ease;
+}
+
+ul li a:hover{
+	background-color: #fff;
+	color: #000;
+}
+
+ul li.active a{
+	background-color: #fff;
+	color: #000;
+}
+.logo img{
+	float: left;
+	width: 170px;
+	height: auto;
+	margin-top: 10px;
+}
+
+.main{
+	max-width: 1200px;
+	margin: auto;
+}
+.form-group.row{
+	margin-top: 3%;
+	margin-left: 24%;
+	margin-right: 10%;
+	font-size: 15px;
+
+}
+.btn.btn-outline-info{
+	margin-left: 30%;
+}
+
+.text-muted{
+	margin-left: 30%;
+	padding-bottom: 5%;
+}
