@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request
-from forms import RegisterFormSt , RegisterFormte , RegisterFormco , LoginForm
+from flask import Flask, g, render_template, request
+from .forms import RegisterFormSt , RegisterFormte , RegisterFormco , LoginForm
 import os
+import os.path
+from . import db
 
 def create_app(test_config=None):
-#create factory for app object with test config	
+	#create factory for app object with test config	
 	app = Flask(__name__,instance_relative_config=True)
 
 
@@ -22,7 +24,8 @@ def create_app(test_config=None):
 		os.makedirs(app.instace_path)
 	except:
 		pass			
-
+	
+	#print(os.path.abspath(g.__file__))
 	@app.route("/")
 	def home():
 	    return render_template("home.html")
@@ -32,6 +35,7 @@ def create_app(test_config=None):
 	def register_s():
 		form = RegisterFormSt()
 		return render_template("register_student.html",title="Register-Student",form=form)
+
 
 	#for teacher
 	@app.route("/register_t",methods=['GET','POST'])
@@ -51,4 +55,6 @@ def create_app(test_config=None):
 		form = LoginForm()
 		return render_template("login.html",title="Login",form=form)
 
+	db.init_app(app)
+		
 	return app	
