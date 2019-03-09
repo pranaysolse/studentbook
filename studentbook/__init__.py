@@ -3,7 +3,7 @@ from .forms import RegisterFormSt , RegisterFormte , RegisterFormco , LoginForm
 import os
 import os.path
 from . import db
-
+from . import auth
 def create_app(test_config=None):
 	#create factory for app object with test config	
 	app = Flask(__name__,instance_relative_config=True)
@@ -31,10 +31,10 @@ def create_app(test_config=None):
 	    return render_template("home.html")
 
 	#for student
-	@app.route("/register_s",methods=['GET','POST'])
-	def register_s():
-		form = RegisterFormSt()
-		return render_template("register_student.html",title="Register-Student",form=form)
+	#@app.route("/register_s",methods=['GET','POST'])
+	#def register_s():
+	#	form = RegisterFormSt()
+	#	return render_template("register_student.html",title="Register-Student",form=form)
 
 
 	#for teacher
@@ -56,5 +56,7 @@ def create_app(test_config=None):
 		return render_template("login.html",title="Login",form=form)
 
 	db.init_app(app)
-		
+	
+	app.register_blueprint(auth.bp)	
+	
 	return app	

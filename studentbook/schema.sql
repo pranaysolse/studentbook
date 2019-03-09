@@ -24,11 +24,9 @@ CREATE TABLE comitteehead (
 CREATE TABLE TEACHER (
 	id INTEGER PRIMARY KEY,
 	username TEXT UNIQUE NOT NULL,
-	password TEXT NOT NULL,
 	address TEXT NOT NULL,
 	designation TEXT NOT NULL,
 	qualification TEXT NOT NULL,
-	subject TEXT NOT NULL,
-
-);
+	subject TEXT NOT NULL
+)
 
