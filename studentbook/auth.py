@@ -35,8 +35,43 @@ def register_student():
 				(username, generate_password_hash(password))
 			)
 			db.commit()
-		return redirect(url_for('home'))
+		return redirect(url_for('/auth/login_s'))
 
 		flash(error)
 
 	return render_template("register_student.html",title="Register-Student",form=form)		
+@bp.route('/login_s', methods=('GET','POST'))
+def login_student():
+	form = forms.LoginForm()
+
+	if request.method == 'POST':
+		username = request.form['username']
+		password = request.form['password']
+		user_type = request.form['user_type']
+		db = get_db()
+		error = None
+
+		if username == None:
+			error = 'username is required '
+		elif password == None:	
+			error = 'password is required'
+		elif user_type == None:
+			error = 'user type is required'
+		else :user = db.execute(
+				'SELECT * FROM user WHERE username = ?',(username,)
+			).fetchone()
+
+		if user is None:
+			error = 'incorrect username'
+		elif not check_password_hash(user['password'],password):	
+			error = 'Incorrect password'
+
+		if error is None:
+			print("error is None")
+
+		flask(error)
+		
+	return render_template('login.html')	
+
+
+
