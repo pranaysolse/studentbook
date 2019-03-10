@@ -68,7 +68,10 @@ def login_student():
 
 		if error is None:
 			print("error is None")
-
+			session.clear()
+			session['user_id']=user['id']
+			#return redirect(url_for('index'))
+			return None
 		flask(error)
 		
 	return render_template('login.html')	
