@@ -31,6 +31,7 @@ ul li a{
 }
 
 ul li a:hover{
+	text-decoration: none;
 	background-color: #fff;
 	color: #000;
 }
@@ -52,7 +53,7 @@ ul li.active a{
 }
 .title{
  	position: absolute;
- 	top: 30%;
+ 	top: 40%;
  	left: 50%;
  	transform: translate(-50%,-50%);
  }
@@ -72,7 +73,7 @@ ul li.active a{
  }
 
 #select_option{
- 	top: 42%;
+ 	top: 52%;
  	left: 50%;
     position: absolute;
     transform: translate(-50%,-50%);
@@ -84,3 +85,18 @@ ul li.active a{
     font-style: italic;
     display: inline-block;
  }
+
+ h1 {
+ font-family: 'Lobster', Georgia, Times, serif;
+ font-size: 70px;
+ line-height: 100px;
+}
+
+h2{
+ font-family: 'Cabin', Helvetica, Arial, sans-serif;
+
+}
+
+hr.style1{
+	border-top: 5px solid white;
+}

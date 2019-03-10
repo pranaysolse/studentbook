@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+	{% block head %}
+		{{super()}}
+		<link rel="stylesheet" type="text/css" href="/static/style_contact.css">
+	{% endblock %}
+{% block body %}
+	<header>
+		<div class="main">
+			<div class="logo">
+				<img src="/static/images/Logo.png">
+			</div>
+			<ul>
+				<li ><a href="http://localhost:5000/">Home</a></li>
+				<li ><a href="http://localhost:5000/about">About</a></li>
+				<li class="active"><a href="#">Contact Us</a></li>
+				<li><a href="http://localhost:5000/login">Login</a></li>
+			</ul>
+		</div>
+	</header>
+{% endblock %}

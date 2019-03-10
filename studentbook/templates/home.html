@@ -1,7 +1,10 @@
 {% extends "layout.html" %}
 	{% block head %}
 		{{super()}}
-		<link rel="stylesheet" type="text/css" href="/static/style_home.css" />
+		<link rel="stylesheet" type="text/css" href="/static/style_home.css" >
+		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+
 	{% endblock %}
 {% block body %}
 	<header>
@@ -18,7 +21,8 @@
 		</div>
 		<div class="title">
 			<h1>Welcome To Student Book</h1>
-			<h2><pre class="tab">      Register As    </pre></h2>
+			<h2><pre class="tab">    Register As    </pre></h2>
+			<hr class="style1">
 		</div>
 		<ul id="select_option">
 				<li><a href="http://localhost:5000/register_s">Student</a></li>

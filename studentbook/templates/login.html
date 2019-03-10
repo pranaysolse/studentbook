@@ -1,7 +1,12 @@
 {% extends "layout.html" %}
 	{% block head %}
 		{{super()}}
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="/static/style_login.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 	{% endblock %}
 {% block body %}
 	<header>
@@ -10,11 +15,34 @@
 				<img src="/static/images/Logo.png">
 			</div>
 			<ul>
-				<li class="active"><a href="#">Home</a></li>
+				<li ><a href="http://localhost:5000/">Home</a></li>
 				<li><a href="http://localhost:5000/about">About</a></li>
 				<li><a href="http://localhost:5000/contact">Contact Us</a></li>
-				<li><a href="http://localhost:5000/login">Login</a></li>
+				<li><a href="http://localhost:5000/#">Login</a></li>
 			</ul>
 		</div>
-	</header>	
+	</header>
+	<footer>
+		<div class="login-form">    
+		    <form action="" method="post">
+				<div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
+		    	<h4 class="modal-title">Login to Your Account</h4>
+		        <div class="form-group">
+		            {{ form.username(type="text" , class="form-control" , placeholder="Username" ,required="required" ) }}
+		        </div>
+		        <div class="form-group">
+		            {{ form.password(type="password" , class="form-control" , placeholder="Password" ,required="required" ) }}
+		        </div>
+		        <div class="form-group small clearfix">
+		        	<label class="checkbox-inline">Login As:
+		        			{{form.user_type(type="select" , class="custom-select my-1 mr-sm-2")}}
+		        	</label><br><br><br>
+		            <label class="checkbox-inline">{{ form.remember(type="checkbox") }} {{ form.remember.label() }} 
+		            <a href="#" class="forgot-link" style="text-indent: 5em;">Forgot Password?</a>
+		        </div> 
+		        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">              
+		    </form>			
+			    <div class="text-center small">Don't have an account? <br><a href="#">Sign up as(Student)</a><br><a href="#"> Sign up as(Teacher)</a><br><a href="#">Sign up as(Committe member)</a></div>
+				</div>
+	</footer>	
 {% endblock %}

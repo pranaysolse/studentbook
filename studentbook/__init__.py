@@ -30,11 +30,21 @@ def create_app(test_config=None):
 	def home():
 	    return render_template("home.html")
 
+	#about page
+	@app.route("/about")
+	def about():
+		return render_template("about.html")
+
+	#contact us page
+	@app.route("/contact")
+	def contact():
+		return render_template("contact.html")
+
 	#for student
-	#@app.route("/register_s",methods=['GET','POST'])
-	#def register_s():
-	#	form = RegisterFormSt()
-	#	return render_template("register_student.html",title="Register-Student",form=form)
+	@app.route("/register_s",methods=['GET','POST'])
+	def register_s():
+		form = RegisterFormSt()
+		return render_template("register_student.html",title="Register-Student",form=form)
 
 
 	#for teacher

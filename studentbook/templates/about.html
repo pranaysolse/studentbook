@@ -1,22 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>About</title>
-	<link rel="stylesheet" type="text/css" href="/static/style_about.css">
-</head>
-<body>
+{% extends "layout.html" %}
+	{% block head %}
+		{{super()}}
+		<link rel="stylesheet" type="text/css" href="/static/style_about.css">
+
+	{% endblock %}
+{% block body %}
 	<header>
 		<div class="main">
 			<div class="logo">
 				<img src="/static/images/Logo.png">
 			</div>
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li class=active><a href="#">About</a></li>
-				<li><a href="#">Contact Us</a></li>
-				<li><a href="#">Login</a></li>
+				<li ><a href="http://localhost:5000/">Home</a></li>
+				<li class="active"><a href="#">About</a></li>
+				<li><a href="http://localhost:5000/contact">Contact Us</a></li>
+				<li><a href="http://localhost:5000/login">Login</a></li>
 			</ul>
 		</div>
 	</header>
-</body>
-</html>
+	<footer>
+		<div class="wrapper">
+			<div class="section-header">
+				<h2>Our Team Members</h2>
+			</div>
+			<div class="team-member">
+				<img src="/static/images/pranay.jpg"  height="200">
+				<h3>Pranay Solse</h3>
+			</div>
+			<div class="team-member">
+				<img src="/static/images/mayank.jpg"  height="200">
+				<h3>Mayank Tripathi</h3>
+			</div>
+			<div class="team-member">
+				<img src="/static/images/aman.jpg"  height="200">
+				<h3>Aman Singh</h3>
+			</div>
+			
+		</div>
+	</footer>
+{% endblock %}
