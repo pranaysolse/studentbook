@@ -45,8 +45,8 @@ class RegisterFormco(FlaskForm):
 	submit = SubmitField('Sign Up')
 
 class LoginForm(FlaskForm):
-	user_type = SelectField('Login As',validators=[DataRequired()], choices = [('Student','Teacher','Committee Member')])
+	user_type = SelectField('Login As',validators=[DataRequired()], choices = [('st','Student'),('te','Teacher'),('co','Committee Member')])
 	username = StringField('Username',validators=[DataRequired() , Length(min=2,max=20)])
 	password = PasswordField('Password',validators=[DataRequired()])
-	remeber = BooleanField('Remember Me')
+	remember = BooleanField('Remember Me')
 	submit = SubmitField('Login')

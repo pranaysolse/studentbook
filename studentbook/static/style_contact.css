@@ -50,19 +50,5 @@ ul li.active a{
 .main{
 	max-width: 1200px;
 	margin: auto;
-}
-.form-group.row{
-	margin-top: 3%;
-	margin-left: 24%;
-	margin-right: 10%;
-	font-size: 15px;
-
-}
-.btn.btn-outline-info{
-	margin-left: 30%;
-}
-
-.text-muted{
-	margin-left: 30%;
-	padding-bottom: 5%;
+	
 }
