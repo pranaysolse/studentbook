@@ -30,6 +30,12 @@ def create_app(test_config=None):
 	def home():
 	    return render_template("home.html")
 
+	@app.route("/")
+	def index():
+	    return render_template("home.html")
+
+
+
 	#about page
 	@app.route("/about")
 	def about():
@@ -45,7 +51,7 @@ def create_app(test_config=None):
 	def register_s():
 		form = RegisterFormSt()
 		return render_template("register_student.html",title="Register-Student",form=form)
-
+		#return render_template('login.html',title='register-student',form=form)	
 
 	#for teacher
 	@app.route("/register_t",methods=['GET','POST'])
