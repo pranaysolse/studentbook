@@ -35,7 +35,7 @@ def register_student():
 				(username, generate_password_hash(password))
 			)
 			db.commit()
-		return redirect(url_for('/auth/login_s'))
+		return redirect(url_for('auth.login_student'))
 
 		flash(error)
 
@@ -47,7 +47,7 @@ def login_student():
 	if request.method == 'POST':
 		username = request.form['username']
 		password = request.form['password']
-		user_type = request.form['user_type']
+		#user_type = request.form['user_type']
 		db = get_db()
 		error = None
 
@@ -55,8 +55,8 @@ def login_student():
 			error = 'username is required '
 		elif password == None:	
 			error = 'password is required'
-		elif user_type == None:
-			error = 'user type is required'
+		#elif user_type == None:
+		#	error = 'user type is required'
 		else :user = db.execute(
 				'SELECT * FROM user WHERE username = ?',(username,)
 			).fetchone()
@@ -77,4 +77,7 @@ def login_student():
 	return render_template('login.html')	
 
 
-
+#<label class="checkbox-inline">Login As:
+#		        			{{form.user_type(type="select" , class="custom-select my-1 mr-sm-2")}}
+#		        	</label><br><br><br>
+# <label class="checkbox-inline">{{ form.remember(type="checkbox") }} {{ form.remember.label() }} 
