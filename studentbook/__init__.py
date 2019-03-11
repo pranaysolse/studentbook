@@ -30,6 +30,12 @@ def create_app(test_config=None):
 	def home():
 	    return render_template("home.html")
 
+	@app.route("/")
+	def index():
+	    return render_template("home.html")
+
+
+
 	#about page
 	@app.route("/about")
 	def about():

@@ -14,6 +14,8 @@ def register_student():
 	form = forms.RegisterFormSt()
 		
 	if request.method == 'POST':
+
+		print(str(request.data))
 		username = request.form['username']
 		print(username)
 		password = request.form['password']
@@ -26,55 +28,63 @@ def register_student():
 			error = 'password is required'	
 		elif db.execute(
 			'SELECT id FROM student WHERE username = ?',(username,)
-		).fetchone is not None:	
+		).fetchone() is not None:	
 			error = f'user {username} is already registered'
 			print(error)
+			return redirect(url_for('auth.login_student'))
 		if error is None:	
 			db.execute(
 				'INSERT INTO student (username,password) VALUES (?,?)',
 				(username, generate_password_hash(password))
 			)
 			db.commit()
-		return redirect(url_for('auth.login_student'))
-
+			print("commited")
+			return redirect(url_for('auth.login_student'))
+		print("flashing now")	
 		flash(error)
-
+		if error is not None:
+			print(error)
 	return render_template("register_student.html",title="Register-Student",form=form)		
 @bp.route('/login_s', methods=('GET','POST'))
 def login_student():
 	form = forms.LoginForm()
 
 	if request.method == 'POST':
+		flash("login form")
+		print(str(request.data))
 		username = request.form['username']
 		password = request.form['password']
-		#user_type = request.form['user_type']
+		user_type = request.form['user_type']
 		db = get_db()
 		error = None
 
 		if username == None:
 			error = 'username is required '
+
 		elif password == None:	
 			error = 'password is required'
-		#elif user_type == None:
-		#	error = 'user type is required'
-		else :user = db.execute(
-				'SELECT * FROM user WHERE username = ?',(username,)
+		elif user_type == None:
+			error = 'user type is required'
+		else :
+			user = db.execute(
+				'SELECT * FROM student WHERE username = ?',(username,)
 			).fetchone()
-
+			print(user)
 		if user is None:
 			error = 'incorrect username'
 		elif not check_password_hash(user['password'],password):	
 			error = 'Incorrect password'
-
+		print(error)	
 		if error is None:
 			print("error is None")
 			session.clear()
 			session['user_id']=user['id']
-			#return redirect(url_for('index'))
+			return redirect(url_for('index'))
 			return None
-		flask(error)
+		print("flashing now")
+		flash(error)
 		
-	return render_template('login.html')	
+	return render_template('login.html',title='login student',form=form)	
 
 
 #<label class="checkbox-inline">Login As:
