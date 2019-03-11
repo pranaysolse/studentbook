@@ -70,7 +70,7 @@ def login_student():
 			user = db.execute(
 				'SELECT * FROM student WHERE username = ?',(username,)
 			).fetchone()
-			for i in user :print(i)
+			
 		if user is None:
 			error = 'incorrect username'
 		elif not check_password_hash(user['password'],password):	
