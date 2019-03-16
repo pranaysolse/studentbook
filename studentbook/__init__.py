@@ -1,5 +1,6 @@
 from flask import Flask, g, render_template, request
-from .forms import RegisterFormSt, RegisterFormte, RegisterFormco, LoginForm
+from .forms import RegisterFormSt, RegisterFormte, RegisterFormco
+from .forms import LoginForm as s
 import os
 import os.path
 from . import db
@@ -68,8 +69,9 @@ def create_app(test_config=None):
     # login for all
     @app.route("/login", methods=['GET', 'POST'])
     def login():
-        form = LoginForm()
-    return render_template("login.html", title="Login", form=form)
+        form = s()
+        print(form)
+        return render_template("login.html", title="Login", form=form)
     db.init_app(app)
     app.register_blueprint(auth.bp)
     return app
