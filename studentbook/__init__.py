@@ -5,6 +5,7 @@ import os
 import os.path
 from . import db
 from . import auth
+from . import admin
 
 
 def create_app(test_config=None):
@@ -74,4 +75,5 @@ def create_app(test_config=None):
         return render_template("login.html", title="Login", form=form)
     db.init_app(app)
     app.register_blueprint(auth.bp)
+    app.register_blueprint(admin.bp)
     return app
