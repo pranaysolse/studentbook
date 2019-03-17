@@ -16,7 +16,7 @@ def get_data():
         if not admin_password:
             error = 'admin password is required'
         elif db.execute(
-            'SELECT id FROM admin WHERE adminname = ?', (admin_name,)
+            'SELECT id FROM admin WHERE adminname = ?', (admin_name,)         
         ).fetchone() is not None:
             print('legit admin')
             return redirect(url_for('showall'))
@@ -26,7 +26,7 @@ def get_data():
 
 @bp.route('/showall', methods=('GET', 'POST'))
 def showall():
-    student_list = [[]]
+    student_list = []
     db = get_db()
     for i in range(1, 100):
         a = (db.execute(
