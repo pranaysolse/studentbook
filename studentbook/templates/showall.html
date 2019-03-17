@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+    {% block head %}
+		    {{super()}}
+		    <meta charset="utf-8">
+		    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		    <meta name="viewport" content="width=device-width, initial-scale=1">
+		    <link rel="stylesheet" type="text/css" href="/static/style_login.css">
+		    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+    {% endblock %}
+{% block body %}    
+    <header>
+        <div class = 'main'>
+            <div class = "logo">
+                <img src="/static/images/logo.png">
+            </div>
+        <ul>
+                <li ><a href="http://localhost:5000/">Home</a></li>
+				<li><a href="http://localhost:5000/about">About</a></li>
+				<li><a href="http://localhost:5000/contact">Contact Us</a></li>
+				<li><a href="http://localhost:5000/#">Login</a></li>
+        </ul>
+        </div>
+    </header>
+    <footer>
+        <table style="width:100%">
+            <tr>
+                <th>name</th>
+                <th>password</th>
+            </tr>
+            
+            {% for user in student_list %}
+            
+            <td>{{user}}</td>
+            <td>{{user}}</td>
+            <tr></tr>
+            {% endfor %}
+            <tr>
+            </tr>
+    </footer>>            
+{% endblock %}        

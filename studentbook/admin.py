@@ -26,6 +26,7 @@ def get_data():
 
 @bp.route('/showall', methods=('GET', 'POST'))
 def showall():
+    student_list = [[]]
     db = get_db()
     for i in range(1, 100):
         a = (db.execute(
@@ -33,6 +34,11 @@ def showall():
         ).fetchone())
         if a is not None:
             for member in a:
+                student_list.append(member)
+                print(student_list)
                 print(member, end=' ')
             print()
-    return redirect(url_for('home'))
+
+    # return redirect(url_for('home'))
+    return render_template("showall.html", title="show all",
+                           student_list=student_list)
