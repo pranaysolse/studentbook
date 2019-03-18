@@ -44,3 +44,4 @@ CREATE TABLE admin (
 
 INSERT INTO admin VALUES (1,'pranay','pranay');
 INSERT INTO admin VALUES (2,'mayank','mayank');
+INSERT INTO admin VALUES (3,'aman','aman');
