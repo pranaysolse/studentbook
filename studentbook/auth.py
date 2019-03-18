@@ -53,6 +53,9 @@ def register_student():
             )
             db.commit()
             print("commited")
+            for i in db.execute('''SELECT *
+            FROM student WHERE id = 3''').fetchone():
+                        print(i)
             return redirect(url_for('auth.login_student'))
         print("flashing now")
         flash(error)
