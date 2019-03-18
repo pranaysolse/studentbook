@@ -18,6 +18,14 @@ def register_student():
         username = request.form['username']
         print(username)
         password = request.form['password']
+        name = request.form['name']
+        print(name)
+        divison = request.form['div']
+        class_st = request.form['class_st']
+        branch = request.form['branch']
+        mobile = request.form['mob']
+        email = request.form['email']
+        address = request.form['add']
         # for i, v in request.form:
         #    print(i, '=', v)
         print(request.form)
@@ -37,8 +45,11 @@ def register_student():
             return redirect(url_for('auth.login_student'))
         if error is None:
             db.execute(
-                'INSERT INTO student (username,password) VALUES (?,?)',
-                (username, generate_password_hash(password))
+                '''INSERT INTO student (names, class, branch, divison,email,mobile,
+                asddress,username, password)
+                 VALUES (?,?,?,?,?,?,?,?,?)''',
+                (name, class_st, branch, divison, email, mobile,
+                 address, username, generate_password_hash(password))
             )
             db.commit()
             print("commited")

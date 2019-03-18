@@ -1,15 +1,18 @@
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS comitteehead;
 DROP TABLE IF EXISTS teacher;
-
+DROP TABLE IF EXISTS admin;
 CREATE TABLE student (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	username TEXT UNIQUE NOT NULL,
-	password TEXT ,
-	address TEXT ,
-	class TEXT ,
-	branch TEXT ,
-	year TEXT 
+	password TEXT NOT NULL,
+	names TEXT NOT null,
+	email TEXT ,
+	mobile TEXT,
+	asddress TEXT ,
+	class TEXT NOT NULL,
+	branch TEXT NOT NULL ,
+	divison TEXT NOT NULL
 );
 
 CREATE TABLE comitteehead (
