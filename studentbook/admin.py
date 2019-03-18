@@ -1,14 +1,15 @@
 from flask import Blueprint, g, render_template, redirect, request, url_for
 from studentbook.db import get_db
-
+from studentbook.forms import LoginForm
 bp = Blueprint('Admin', __name__, url_prefix='/Admin')
 
 
 @bp.route('/data', methods=('GET', 'POST'))
 def get_data():
+    form = LoginForm()
     if request.method == 'POST':
-        admin_name = request.form['admin_name']
-        admin_password = request.form['admin_pass']
+        admin_name = request.form['username']
+        admin_password = request.form['password']
         db = get_db()
         error = None
         if not admin_name:
@@ -19,9 +20,10 @@ def get_data():
             'SELECT id FROM admin WHERE adminname = ?', (admin_name,)
         ).fetchone() is not None:
             print('legit admin')
-            return redirect(url_for('showall'))
+            return redirect(url_for('Admin.showall'))
         else:
-            return redirect(url_for('showall'))
+            return render_template('adminlogin.html')
+    return render_template('adminlogin.html', title='admin', form=form)
 
 
 @bp.route('/showall', methods=('GET', 'POST'))
