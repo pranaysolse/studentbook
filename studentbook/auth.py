@@ -18,6 +18,11 @@ def register_student():
         username = request.form['username']
         print(username)
         password = request.form['password']
+        # for i, v in request.form:
+        #    print(i, '=', v)
+        print(request.form)
+        for i in request.form:
+                print(i)
         db = get_db()
         error = None
         if not username:
