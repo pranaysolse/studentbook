@@ -37,7 +37,8 @@ def get_data():
             return render_template("showall.html", title="show all",
                                    student_list=student_list)
         else:
-            return render_template('adminlogin.html', tiltle='admin', form=form)
+            return render_template('adminlogin.html',
+                                   tiltle='admin', form=form)
     return render_template('adminlogin.html', title='admin', form=form)
 
 
