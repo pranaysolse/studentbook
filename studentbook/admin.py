@@ -20,13 +20,28 @@ def get_data():
             'SELECT id FROM admin WHERE adminname = ?', (admin_name,)
         ).fetchone() is not None:
             print('legit admin')
-            return redirect(url_for('Admin.showall'))
+            # return redirect(url_for('Admin.showall'))
+            student_list = []
+            db = get_db()
+            for i in range(1, 100):
+                a = (db.execute(
+                    'SELECT username, password FROM student WHERE id = ?', (i,)
+                ).fetchone())
+                if a is not None:
+                    for member in a:
+                        student_list.append(member)
+                        print(student_list)
+                        print(member, end=' ')
+                    print()
+    # return redirect(url_for('home'))
+            return render_template("showall.html", title="show all",
+                                   student_list=student_list)
         else:
-            return render_template('adminlogin.html')
+            return render_template('adminlogin.html', tiltle='admin', form=form)
     return render_template('adminlogin.html', title='admin', form=form)
 
 
-@bp.route('/showall', methods=('GET', 'POST'))
+""" @bp.route('/showall', methods=('GET', 'POST'))
 def showall():
     student_list = []
     db = get_db()
@@ -44,3 +59,4 @@ def showall():
     # return redirect(url_for('home'))
     return render_template("showall.html", title="show all",
                            student_list=student_list)
+"""
