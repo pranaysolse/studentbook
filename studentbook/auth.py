@@ -7,6 +7,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from studentbook.db import get_db
 from studentbook import forms
+from studentbook.index import *
+
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
@@ -97,7 +99,7 @@ def login_student():
             print("error is None")
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('index'))
+            return redirect(url_for('index.index_student'))
             return None
         print("flashing now")
         flash(error)
@@ -177,7 +179,7 @@ def login_teacher():
             print("error is None")
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('index'))
+            return redirect(url_for('index.index_teacher'))
             return None
         print("flashing now")
         flash(error)
@@ -256,7 +258,7 @@ def login_committee():
             print("error is None")
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('index'))
+            return redirect(url_for('index.index_comitee'))
             return None
         print("flashing now")
         flash(error)
