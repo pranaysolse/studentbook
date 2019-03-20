@@ -6,6 +6,7 @@ import os.path
 from . import db
 from . import auth
 from . import admin
+from . import index
 
 
 def create_app(test_config=None):
@@ -28,10 +29,6 @@ def create_app(test_config=None):
 # print(os.path.abspath(g.__file__))
     @app.route("/")
     def home():
-        return render_template("home.html")
-
-    @app.route("/")
-    def index():
         return render_template("home.html")
 
 
@@ -71,9 +68,9 @@ def create_app(test_config=None):
     @app.route("/login", methods=['GET', 'POST'])
     def login():
         form = s()
-        print(form)
         return render_template("login.html", title="Login", form=form)
     db.init_app(app)
     app.register_blueprint(auth.bp)
     app.register_blueprint(admin.bp)
+    app.register_blueprint(index.bp)
     return app
