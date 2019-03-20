@@ -54,8 +54,10 @@ ul li.active a{
 }
 
 footer{
-	background: #3b4172;
+	background:/* #3b4172 #363433*/;
 	font-family: poppins;
+	color: black;
+	margin-bottom: 0px;
 }
 
 .wrapper{
@@ -88,7 +90,7 @@ footer{
 	text-align: center;
 	margin: 0 5px;
 	margin-left: 6%; 
-	background: #222859;
+	background: /*#222859*/#363433;
 }
 
 .team-member img{
@@ -141,3 +143,15 @@ footer{
 	transform: translateX(0);
 	transition: .3s transform linear, .3s height linear .5s;
 }
+
+.container h1{
+	margin-top: 35%;
+}
+
+.striped-border {
+        border: 1px dashed #000;
+        width: 100%;
+        margin: auto;
+        margin-top: 0;
+        margin-bottom: 1%;
+    }

@@ -30,9 +30,9 @@ def create_app(test_config=None):
 	def home():
 	    return render_template("home.html")
 
-	@app.route("/")
+	@app.route("/user",methods=["POST"])
 	def index():
-	    return render_template("home.html")
+	    return render_template("user_page_student.html")
 
 
 
@@ -47,20 +47,20 @@ def create_app(test_config=None):
 		return render_template("contact.html")
 
 	#for student
-	@app.route("/register_s",methods=['GET','POST'])
+	@app.route("/auth/register_student",methods=['GET','POST'])
 	def register_s():
 		form = RegisterFormSt()
 		return render_template("register_student.html",title="Register-Student",form=form)
 		#return render_template('login.html',title='register-student',form=form)	
 
 	#for teacher
-	@app.route("/register_t",methods=['GET','POST'])
+	@app.route("/auth/register_teacher",methods=['GET','POST'])
 	def register_t():
 		form = RegisterFormte()
 		return render_template("register_teacher.html",title="Register-Teacher",form=form)
 
 	#for committee
-	@app.route("/register_c",methods=['GET','POST'])
+	@app.route("/auth/register_committee",methods=['GET','POST'])
 	def register_c():
 		form = RegisterFormco()
 		return render_template("register_committee.html",title="Register-Committee",form=form)
