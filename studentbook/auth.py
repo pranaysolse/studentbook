@@ -299,5 +299,5 @@ def logout_teacher():
 @bp.route('/logout_s', methods=('GET', 'POST'))
 def logout_student():
         session.pop('username', None)
-        return redirect(url_for('about.html'))
+        return redirect(url_for('about'))
     # return redirect(url_for('home'))
