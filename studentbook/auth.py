@@ -55,7 +55,7 @@ def register_student():
             )
             db.commit()
             print("commited")
-            return redirect(url_for('auth.login_student'))
+            return redirect(url_for('auth.login_student', username=username))
         print("flashing now")
         flash(error)
         if error is not None:
@@ -84,6 +84,12 @@ def login_student():
             error = 'password is required'
         elif user_type is None:
             error = 'user type is required'
+        elif user_type != 'st':
+            error = 'user type is wrong'
+            print(error)
+            flash(error)
+            return render_template('login.html',
+                                   title='login student', form=form)
         else:
             user = db.execute(
                 'SELECT * FROM student WHERE username = ?', (username,)
@@ -166,6 +172,12 @@ def login_teacher():
             error = 'password is required'
         elif user_type is None:
             error = 'user type is required'
+        elif user_type != 'te':
+            error = 'wrong user type '
+            print(error)
+            flash(error)
+            return render_template('login.html',
+                                   title='login teacher', form=form)
         else:
             user = db.execute(
                 'SELECT * FROM teacher WHERE username = ?', (username,)
@@ -244,6 +256,11 @@ def login_committee():
             error = 'password is required'
         elif user_type is None:
             error = 'user type is required'
+        elif user_type != 'co':
+            error = 'user type is wrong'
+            flash('error')
+            return render_template('login.html',
+                                   title='login commitee', form=form)
         else:
             user = db.execute(
                 'SELECT * FROM comitteehead WHERE username = ?', (username,)

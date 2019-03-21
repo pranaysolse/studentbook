@@ -30,10 +30,14 @@ def create_app(test_config=None):
     @app.route("/")
     def home():
         return render_template("home.html")
-
-
 # about page
-    @app.route("/about")
+
+    @app.route('/about')
+    def abouts():
+        return render_template("about.html")
+# about page
+
+    @app.route("/logout")
     def about():
         return render_template("about.html")
 
