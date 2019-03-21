@@ -78,4 +78,5 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
     app.register_blueprint(admin.bp)
     app.register_blueprint(index.bp)
+#    app.before_request(home)
     return app
