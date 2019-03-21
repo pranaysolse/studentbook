@@ -69,10 +69,11 @@ def create_app(test_config=None):
                                title="Register-Committee", form=form)
 
     # login for all
-    @app.route("/login", methods=['GET', 'POST'])
-    def login():
-        form = s()
-        return render_template("login.html", title="Login", form=form)
+#   @app.route("/login", methods=['GET', 'POST'])
+#    def login():
+#        form = s()
+#        return render_template("login.html", title="Login", form=form)  
+
     db.init_app(app)
     app.register_blueprint(auth.bp)
     app.register_blueprint(admin.bp)
