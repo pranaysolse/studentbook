@@ -104,7 +104,9 @@ def login_student():
         if error is None:
             print("error is None")
             session.clear()
-            session['user_id'] = user['id']
+            session['username'] = user['username']
+            session['name'] = 'pranay'
+            print(session['name'])
             return redirect(url_for('index.index_student'))
             return None
         print("flashing now")
@@ -296,5 +298,6 @@ def logout_teacher():
 
 @bp.route('/logout_s', methods=('GET', 'POST'))
 def logout_student():
-    session.pop('username', None)
-    return redirect(url_for('home'))
+        session.pop('username', None)
+        return redirect(url_for('about.html'))
+    # return redirect(url_for('home'))
