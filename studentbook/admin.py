@@ -25,7 +25,11 @@ def get_data():
             db = get_db()
             for i in range(1, 100):
                 a = (db.execute(
-                    'SELECT username, password FROM student WHERE id = ?', (i,)
+                    ''' SELECT username, password,
+                    id, names, mobile, asddress, class,
+                    branch, divison
+                    FROM student
+                     WHERE id = ?''', (i,)
                 ).fetchone())
                 if a is not None:
                     for member in a:

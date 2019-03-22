@@ -1,3 +1,4 @@
+import time
 import functools
 from flask import(
     Blueprint, flash, g, redirect, render_template, request, session, url_for
@@ -67,7 +68,7 @@ def register_student():
 @bp.route('/login_s', methods=('GET', 'POST'))
 def login_student():
     form = forms.LoginForm()
-
+    error = None
     if request.method == 'POST':
         flash("login form")
         print(str(request.data))
@@ -75,7 +76,6 @@ def login_student():
         password = request.form['password']
         user_type = request.form['user_type']
         db = get_db()
-        error = None
 
         if username is None:
             error = 'username is required '
@@ -89,7 +89,8 @@ def login_student():
             print(error)
             flash(error)
             return render_template('login.html',
-                                   title='login student', form=form)
+                                   title='login student', form=form,
+                                   error=error)
         else:
             user = db.execute(
                 'SELECT * FROM student WHERE username = ?', (username,)
@@ -112,7 +113,8 @@ def login_student():
         print("flashing now")
         flash(error)
 
-    return render_template('login.html', title='login student', form=form)
+    return render_template('login.html', title='login student', form=form,
+                           error=error)
 
 # ------------------------------------------------------------------------------------------
 # ////////////////////////////////////////////////////////////////////////////////////////
@@ -159,6 +161,7 @@ def register_teacher():
 @bp.route('/login_t', methods=('GET', 'POST'))
 def login_teacher():
     form = forms.LoginForm()
+    error = None
     if request.method == 'POST':
         flash("login form")
         print(str(request.data))
@@ -166,7 +169,6 @@ def login_teacher():
         password = request.form['password']
         user_type = request.form['user_type']
         db = get_db()
-        error = None
 
         if username is None:
             error = 'username is required '
@@ -176,10 +178,11 @@ def login_teacher():
             error = 'user type is required'
         elif user_type != 'te':
             error = 'wrong user type '
-            print(error)
+            print(error, 'huh')
             flash(error)
             return render_template('login.html',
-                                   title='login teacher', form=form)
+                                   title='login teacher', form=form,
+                                   error=error)
         else:
             user = db.execute(
                 'SELECT * FROM teacher WHERE username = ?', (username,)
@@ -188,16 +191,18 @@ def login_teacher():
             error = 'incorrect username'
         elif not check_password_hash(user['password'], password):
             error = 'Incorrect password'
-        print(error)
+        print(error, ' huh')
         if error is None:
             print("error is None")
             session.clear()
             session['user_id'] = user['id']
+            error = ''
             return redirect(url_for('index.index_teacher'))
             return None
         print("flashing now")
         flash(error)
-    return render_template('login.html', title='login teacher', form=form)
+    return render_template('login.html', title='login teacher', form=form,
+                           error=error)
 
 # -----------------------------------------------------------------------------
 # /////////////////////////////////////////////////////////////////////////////
@@ -243,6 +248,7 @@ def register_comitteehead():
 @bp.route('/login_c', methods=('GET', 'POST'))
 def login_committee():
     form = forms.LoginForm()
+    error = None
     if request.method == 'POST':
         flash("login form")
         print(str(request.data))
@@ -250,7 +256,6 @@ def login_committee():
         password = request.form['password']
         user_type = request.form['user_type']
         db = get_db()
-        error = None
 
         if username is None:
             error = 'username is required '
@@ -260,9 +265,10 @@ def login_committee():
             error = 'user type is required'
         elif user_type != 'co':
             error = 'user type is wrong'
-            flash('error')
+            flash(error)
             return render_template('login.html',
-                                   title='login commitee', form=form)
+                                   title='login commitee', form=form,
+                                   error=error)
         else:
             user = db.execute(
                 'SELECT * FROM comitteehead WHERE username = ?', (username,)
@@ -281,7 +287,8 @@ def login_committee():
             return None
         print("flashing now")
         flash(error)
-    return render_template('login.html', title='login commitee', form=form)
+    return render_template('login.html', title='login commitee', form=form,
+                           error=error)
 
 
 @bp.route('/logout_c', methods=('GET', 'POST'))
