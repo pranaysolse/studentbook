@@ -30,10 +30,14 @@ def create_app(test_config=None):
     @app.route("/")
     def home():
         return render_template("home.html")
-
-
 # about page
-    @app.route("/about")
+
+    @app.route('/about')
+    def abouts():
+        return render_template("about.html")
+# about page
+
+    @app.route("/logout")
     def about():
         return render_template("about.html")
 
@@ -64,13 +68,9 @@ def create_app(test_config=None):
         return render_template("register_committee.html",
                                title="Register-Committee", form=form)
 
-    # login for all
-    @app.route("/login", methods=['GET', 'POST'])
-    def login():
-        form = s()
-        return render_template("login.html", title="Login", form=form)
     db.init_app(app)
     app.register_blueprint(auth.bp)
     app.register_blueprint(admin.bp)
     app.register_blueprint(index.bp)
+#    app.before_request(home)
     return app
