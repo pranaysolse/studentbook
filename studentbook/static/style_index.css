@@ -1,0 +1,33 @@
+
+
+body{
+    background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(images/background2.jpg);
+	background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.logo{
+    padding-top:1%; 
+}
+
+.btn.btn-primary{
+    float: right;
+    margin-right: 5%;
+    margin-top: 1%;
+}
+
+.nav-link{
+    cursor: pointer;
+}
+
+.card.text-center{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
+#timetable.card-body,#assignment.card-body,#syllabus.card-body,#events.card-body,#committee.card-body,#notice.card-body,#profile.card-body{
+    display:none;
+}
