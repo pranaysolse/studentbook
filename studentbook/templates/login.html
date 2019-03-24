@@ -22,6 +22,11 @@
 		</div>
 	</header>
 	<footer>
+		<div>
+			{% if error %}
+    		<p class='error'><strong>Error:</strong> {{ error }}
+  			{% endif %}
+		</div>
 		<div class="login-form">    
 		    <form action="http://localhost:5000/index/student" method="post">
 				<div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
@@ -42,7 +47,8 @@
 		        </div> 
 		        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">              
 		    </form>			
-			    <div class="text-center small">Don't have an account? <br><a href="#">Sign up as(Student)</a><br><a href="#"> Sign up as(Teacher)</a><br><a href="#">Sign up as(Committe member)</a></div>
+				<div class="text-center small">Don't have an account? <br><a href="#">Sign up as(Student)</a><br><a href="#"> Sign up as(Teacher)</a><br><a href="#">Sign up as(Committe member)</a></div>
 				</div>
+				
 	</footer>	
 {% endblock %}

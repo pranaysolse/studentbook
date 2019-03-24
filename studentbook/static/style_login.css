@@ -57,6 +57,9 @@ footer {
 		background: #f5f5f5;
 		font-family: 'Varela Round', sans-serif;
 	}
+	.error {
+		text-align: initial
+	}
 	.form-control {
 		box-shadow: none;
 		border-color: #ddd;
