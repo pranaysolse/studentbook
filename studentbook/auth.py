@@ -108,7 +108,8 @@ def login_student():
             session['username'] = user['username']
             session['name'] = 'pranay'
             print(session['name'])
-            return redirect(url_for('index.index_student'))
+            # return redirect(url_for('index.index_student'))
+            return render_template("index.html", title="student")
             return None
         print("flashing now")
         flash(error)

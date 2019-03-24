@@ -52,3 +52,19 @@ ul li.active a{
 	margin: auto;
 	
 }
+
+.card{
+	margin-right:20%;
+	margin-left:20%;
+	margin-top:3%;
+	border-color: black;
+}
+
+.card.header{
+	background-color:black;
+}
+
+#comment{
+	width: 100%;
+	
+}
