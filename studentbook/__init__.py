@@ -42,7 +42,7 @@ def create_app(test_config=None):
         return render_template("about.html")
 
 # contact us page
-    @app.route("/contact")
+    @app.route("/contact", methods=['GET', 'POST'])
     def contact():
         return render_template("contact.html")
 

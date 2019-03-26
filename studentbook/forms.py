@@ -87,3 +87,9 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+
+
+class Contact_us(FlaskForm):
+    full_name = StringField('Full name', validators=[Length(min=1, max=30)])
+    email = IntegerField('Email', validators=[Email()])
+    comment = StringField('Comment', validators=[Length(min=2, max=120)])
