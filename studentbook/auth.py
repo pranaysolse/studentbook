@@ -16,6 +16,7 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 @bp.route('/register_s', methods=('GET', 'POST'))
 def register_student():
     form = forms.RegisterFormSt()
+    error = None
     if request.method == 'POST':
         print(str(request.data))
         username = request.form['username']
@@ -45,7 +46,8 @@ def register_student():
         ).fetchone() is not None:
             error = f'user {username} is already registered'
             print(error)
-            return redirect(url_for('auth.login_student'))
+            flash(error)
+            # return redirect(url_for('auth.login_student'))
         if error is None:
             db.execute(
                 '''INSERT INTO student (names, class, branch, divison,email,mobile,
@@ -62,7 +64,8 @@ def register_student():
         if error is not None:
             print(error)
     return render_template("register_student.html",
-                           title="Register-Student", form=form)
+                           title="Register-Student",
+                           form=form, error=error)
 
 
 @bp.route('/login_s', methods=('GET', 'POST'))
@@ -124,7 +127,7 @@ def login_student():
 @bp.route('/register_t', methods=('GET', 'POST'))
 def register_teacher():
     form = forms.RegisterFormte()
-
+    error = None
     if request.method == 'POST':
         print(str(request.data))
         username = request.form['username']
@@ -142,7 +145,11 @@ def register_teacher():
         ).fetchone() is not None:
             error = f'user {username} is already registered'
             print(error)
-            return redirect(url_for('auth.login_teacher'))
+            flash(error)
+            return render_template("register_teacher.html",
+                                   title="Register-teacher",
+                                   form=form, error=error)
+            # return redirect(url_for('auth.login_teacher'))
         if error is None:
             db.execute(
                 'INSERT INTO teacher (username,password) VALUES (?,?)',
@@ -156,7 +163,7 @@ def register_teacher():
         if error is not None:
             print(error)
     return render_template("register_teacher.html", title="Register-teacher",
-                           form=form)
+                           form=form, error=error)
 
 
 @bp.route('/login_t', methods=('GET', 'POST'))
@@ -212,6 +219,7 @@ def login_teacher():
 @bp.route('/register_c', methods=('GET', 'POST'))
 def register_comitteehead():
     form = forms.RegisterFormco()
+    error = None
     if request.method == 'POST':
         print(str(request.data))
         username = request.form['username']
@@ -229,7 +237,12 @@ def register_comitteehead():
         ).fetchone() is not None:
             error = f'user {username} is already registered'
             print(error)
-            return redirect(url_for('auth.login_committee'))
+            flash(error)
+            # return redirect(url_for('auth.login_committee'))
+            return render_template("register_committee.html",
+                                   title="Register-teacher", form=form,
+                                   error=error)
+
         if error is None:
             db.execute(
                 'INSERT INTO comitteehead (username,password) VALUES (?,?)',
@@ -242,8 +255,10 @@ def register_comitteehead():
         flash(error)
         if error is not None:
             print(error)
+            flash(error)
     return render_template("register_committee.html",
-                           title="Register-teacher", form=form)
+                           title="Register-teacher", form=form,
+                           error=error)
 
 
 @bp.route('/login_c', methods=('GET', 'POST'))
