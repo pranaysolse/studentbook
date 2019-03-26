@@ -73,13 +73,13 @@ def login_student():
         flash("login form")
         print(str(request.data))
         username = request.form['username']
+        print(username)
         password = request.form['password']
+        print(password)
         user_type = request.form['user_type']
         db = get_db()
-
         if username is None:
             error = 'username is required '
-
         elif password is None:
             error = 'password is required'
         elif user_type is None:
@@ -109,10 +109,8 @@ def login_student():
             session['name'] = 'pranay'
             print(session['name'])
             return redirect(url_for('index.index_student'))
-            return None
         print("flashing now")
         flash(error)
-
     return render_template('login.html', title='login student', form=form,
                            error=error)
 
