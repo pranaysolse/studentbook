@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="/static/style_login.css">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+	  rel="stylesheet">
 	{% endblock %}
 {% block body %}
 	<header>
@@ -22,11 +22,18 @@
 		</div>
 	</header>
 	<footer>
+
 		<div>
 			{% if error %}
-    		<p class='error'><strong>Error:</strong> {{ error }}
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				<p class='error'><strong>Error:</strong> {{ error }}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+				</button>
+			</div>
   			{% endif %}
 		</div>
+
 		<div class="login-form">    
 		    <form action="" method="post">
 				<div class="avatar"><i class="material-icons">&#xE7FF;</i></div>

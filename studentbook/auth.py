@@ -106,10 +106,16 @@ def login_student():
             print("error is None")
             session.clear()
             session['username'] = user['username']
-            session['name'] = 'pranay'
-            print(session['name'])
+            session['name'] = user['names']
+            session['email'] = user['email']
+            session['class'] = user['class']
+            session['branch'] = user['branch']
+            # session['divison'] = user[divison]
+            session['contact'] = user['mobile']
+            print('BITCH', session['name'])
             # return redirect(url_for('index.index_student'))
-            return render_template("index.html", title="student")
+            # return redirect(url_for('index.index_student'))
+            return redirect(url_for('index.index_student'))
             return None
         print("flashing now")
         flash(error)
@@ -145,12 +151,12 @@ def register_teacher():
             return redirect(url_for('auth.login_teacher'))
         if error is None:
             db.execute(
-                'INSERT INTO teacher (username,password) VALUES (?,?)',
+                '''INSERT INTO teacher (username,password) VALUES (?,?)''',
                 (username, generate_password_hash(password))
             )
             db.commit()
             print("commited")
-            return redirect(url_for('auth.login_teacher'))
+            return redirect(url_for('auth.login_teacher',username=username))
         print("flashing now")
         flash(error)
         if error is not None:
@@ -196,11 +202,10 @@ def login_teacher():
         if error is None:
             print("error is None")
             session.clear()
-            session['user_id'] = user['id']
+            session['username'] = user['username']
             error = ''
             return redirect(url_for('index.index_teacher'))
             return None
-        print("flashing now")
         flash(error)
     return render_template('login.html', title='login teacher', form=form,
                            error=error)
@@ -295,7 +300,7 @@ def login_committee():
 @bp.route('/logout_c', methods=('GET', 'POST'))
 def logout_comittee():
     session.pop('username', None)
-    return redirect(url_for('home'))
+    return render_template("home.html")
 
 
 @bp.route('/logout_t', methods=('GET', 'POST'))

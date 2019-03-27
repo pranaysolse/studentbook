@@ -39,7 +39,6 @@ def init_db():
 def init_db_command():
     """
     clear the exiting dara and create database via cli
-
     """
     init_db()
     click.echo("initialized the database")

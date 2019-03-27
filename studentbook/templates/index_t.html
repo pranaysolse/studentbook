@@ -77,21 +77,36 @@
 			</div>
 
 			<div class="card-body" id="timetable">
-					<h5 class="card-title">List of timetables</h5><br>
+           <h3 class="card-title">Timetable</h3>
+                <div class="container">
+                      <div class="row">
+												<form action = "http://localhost:5000/upload_t" method = "POST" 
+         												enctype = "multipart/form-data">
+         												<input type = "file" name = "file" />
+        												<input type = "submit"/>
+      									</form>
+											</div>
+                     <h5>Uploaded Timetables :</h5>  <br><br>                    
+										 <a href="#demo" class="btn btn-info" data-toggle="collapse">Show timetable</a>
+										 <br><br>
+										 <div id="demo" class="collapse">
+											 {% for file in timetable%}
+											 <embed src="{{file}}" type="application/pdf"   height="600px" width="100%">
+											 <br><br><br><br>
+											 {% endfor %}
+										 </div>
+                     </div>      
+      </div>
+                    
 			
-						<a href="#demo" class="btn btn-info" data-toggle="collapse">Show timetable</a>
-						<br><br>
-						<div id="demo" class="collapse">
-							{% for file in timetable %}
-							<embed src="{{file}}" type="application/pdf"   height="600px" width="100%">
-							<br><br><br><br>
-							{% endfor %}
-						</div>
-
-			</div>
 
 			<div class="card-body" id="assignment">
 				<h5 class="card-title">See All the assignment</h5>
+				<form action = "http://localhost:5000/upload_a" method = "POST" 
+         												enctype = "multipart/form-data">
+         												<input type = "file" name = "file" />
+        												<input type = "submit"/>
+				</form>
 				<a href="#demo" class="btn btn-info" data-toggle="collapse">Show Assignment</a>
 						<br><br>
 						<div id="demo" class="collapse">
@@ -103,6 +118,12 @@
 			</div>
 
 			<div class="card-body" id="syllabus">
+				<h5 class="card-title">See syllabus</h5>
+				<form action = "http://localhost:5000/upload_s" method = "POST" 
+         												enctype = "multipart/form-data">
+         												<input type = "file" name = "file" />
+        												<input type = "submit"/>
+				</form>
 				<a href="#demo" class="btn btn-info" data-toggle="collapse">Show Syllabus</a>
 						<br><br>
 						<div id="demo" class="collapse">
@@ -131,6 +152,11 @@
 
 			<div class="card-body" id="notice">
 				<h5 class="card-title">See All notice</h5>
+				<form action = "http://localhost:5000/upload_n" method = "POST" 
+         												enctype = "multipart/form-data">
+         												<input type = "file" name = "file" />
+        												<input type = "submit"/>
+				</form>
 				<a href="#demo" class="btn btn-info" data-toggle="collapse">Show Notice</a>
 						<br><br>
 						<div id="demo" class="collapse">
@@ -138,19 +164,16 @@
 							<embed src="{{file}}" type="application/pdf"   height="600px" width="100%">
 							<br><br><br><br>
 							{% endfor %}
-						</div>
+				</div>
 			</div>
 
 			<div class="card-body" id="profile">
 					<div class="container">
 					<h3>Profile Information</h3>
 					<br>
-					<div class="card-body" id="profile">
-						<h5 class="card-title">welcome profile</h5>
-						{%for i in items %}
-						<li>{{i}}{{':'}}{{items[i]}}</li>
-						{% endfor %}
-					</div>
+					{%for i in items %}
+				
+				 {% endfor %}
 					</div>
 			</div>
 
