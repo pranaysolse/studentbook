@@ -20,4 +20,6 @@ def index_comitee():
 
 @bp.route('/teacher', methods=('GET', 'POST'))
 def index_teacher():
-    return render_template('index.html')
+    items = None
+    items = session
+    return render_template('index.html', items=items)

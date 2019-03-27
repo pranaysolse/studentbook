@@ -112,15 +112,16 @@ def login_student():
             print("error is None")
             session.clear()
 
-            session['username'] = user['username']
-            session['name'] = user['names']
-            session['email'] = user['email']
-            session['class'] = user['class']
-            session['branch'] = user['branch']
+            session['username'] = str(user['username'])
+            session['name'] = str(user['names'])
+            session['email'] = str(user['email'])
+            session['class'] = str(user['class'])
+            session['branch'] = str(user['branch'])
             # session['divison'] = user[divison]
-            session['contact'] = user['mobile']
+            session['contact'] = str(user['mobile'])
             print('BITCH', session['name'])
-            # return redirect(url_for('index.index_student'))
+            # return redirect
+            # (url_for('index.index_student'))
             # return redirect(url_for('index.index_student'))
             return redirect(url_for('index.index_student'))
             return None
@@ -212,7 +213,13 @@ def login_teacher():
         if error is None:
             print("error is None")
             session.clear()
-            session['user_id'] = user['id']
+            session['username'] = str(user['username'])
+            
+            # session['email'] = str(user['email'])
+            #  session['class'] = str(user['class'])
+            # session['branch'] = str(user['branch'])
+            # session['divison'] = user[divison]
+            # session['contact'] = str(user['mobile'])
             error = ''
             return redirect(url_for('index.index_teacher'))
             return None
@@ -308,6 +315,14 @@ def login_committee():
             print("error is None")
             session.clear()
             session['user_id'] = user['id']
+            session.clear()
+            session['username'] = user['username']
+            session['name'] = user['names']
+            session['email'] = user['email']
+            session['class'] = user['class']
+            session['branch'] = user['branch']
+            # session['divison'] = user[divison]
+            session['contact'] = user['mobile']
             return redirect(url_for('index.index_comitee'))
             return None
         print("flashing now")
