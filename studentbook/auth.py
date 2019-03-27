@@ -8,8 +8,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from studentbook.db import get_db
 from studentbook import forms
-from studentbook.index import *
-
+# from studentbook.index import *
+from studentbook import index
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
@@ -105,15 +105,24 @@ def login_student():
         elif not check_password_hash(user['password'], password):
             error = 'Incorrect password'
         print(error)
+        # if error is None that means that there is no error and user contains
+        # dict which ha skey value pair so we need to create a session for it
+        #  and store this values in it
         if error is None:
             print("error is None")
             session.clear()
+
             session['username'] = user['username']
-            session['name'] = 'pranay'
-            print(session['name'])
+            session['name'] = user['names']
+            session['email'] = user['email']
+            session['class'] = user['class']
+            session['branch'] = user['branch']
+            # session['divison'] = user[divison]
+            session['contact'] = user['mobile']
+            print('BITCH', session['name'])
             # return redirect(url_for('index.index_student'))
             # return redirect(url_for('index.index_student'))
-            return render_template("index.html", title="student")
+            return redirect(url_for('index.index_student'))
             return None
         print("flashing now")
         flash(error)

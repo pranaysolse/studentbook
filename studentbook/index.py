@@ -6,9 +6,11 @@ from flask import(
 bp = Blueprint('index', __name__, url_prefix='/index')
 
 
-'''@bp.route('/student', methods=('GET', 'POST'))
+@bp.route('/student', methods=('GET', 'POST'))
 def index_student():
-    return render_template('index.html')'''
+    items = None
+    items = session
+    return render_template('index.html', items=items)
 
 
 @bp.route('/comitee', methods=('GET', 'POST'))
