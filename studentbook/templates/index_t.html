@@ -1,49 +1,49 @@
 {% extends "layout.html" %}
-	{% block head %}
-		{{super()}}
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="/static/style_index.css">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	       rel="stylesheet">
-		
-		   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-		   crossorigin="anonymous">
-		   
-   			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		  	 crossorigin="anonymous"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		   	crossorigin="anonymous"></script>
-   			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-			   crossorigin="anonymous"></script>
-			   
-			<script src="/static/index.js"></script>
-	{% endblock %}
+{% block head %}
+{{super()}}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/static/style_index.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	crossorigin="anonymous"></script>
+
+<script src="/static/index.js"></script>
+{% endblock %}
 {% block body %}
-	<header>
+<header>
 	<div class="container-fluid">
 
 		<div class="logo">
 			<img src="/static/images/Logo.png" height="100" width="160">
-			<button type="button" class="btn btn-primary">Logout</button>
-		</div>	
-		
+			<button type="button" class="btn btn-primary"
+				onclick="location.href='http://localhost:5000/'">Logout</button>
+		</div>
+
 		<div class="card text-center">
-				<div class="card-header">
-				  <ul class="nav nav-pills card-header-pills">
+			<div class="card-header">
+				<ul class="nav nav-pills card-header-pills">
 					<li class="nav-item">
-					  <a class="nav-link active" id="home-1">Home</a>
+						<a class="nav-link active" id="timetable-1">Timetable</a>
 					</li>
-					<li class="nav-item" >
-					  <a class="nav-link"  id="timetable-1">Timetable</a>
-					</li>
-					<li class="nav-item" >
+					<li class="nav-item">
 						<a class="nav-link" id="assignment-1">Assignment</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" id="syllabus-1">Syllabus</a>
-					</li>	
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" id="events-1">Events</a>
 					</li>
@@ -53,97 +53,89 @@
 					<li class="nav-item">
 						<a class="nav-link" id="notice-1">Notice</a>
 					</li>
-					<li class="nav-item" >
+					<li class="nav-item">
 						<a class="nav-link" id="profile-1">Profile</a>
-					</li>					
-				  </ul>
-		        </div>
-
-
-			<div class="card-body" id="home">		
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="card">
-							<h5 class="card-title"> hello </h5>
-
-						</div>
-					</div>	
-					<div class="col-sm-6">
-							<div class="card">
-								<h5 class="card-title"> hello </h5>
-							</div>
-					</div>
-				</div>  
+					</li>
+				</ul>
 			</div>
 
 			<div class="card-body" id="timetable">
-           <h3 class="card-title">Timetable</h3>
-                <div class="container">
-                      <div class="row">
-												<form action = "http://localhost:5000/upload_t" method = "POST" 
-         												enctype = "multipart/form-data">
-         												<input type = "file" name = "file" />
-        												<input type = "submit"/>
-      									</form>
-											</div>
-                     <h5>Uploaded Timetables :</h5>  <br><br>                    
-										 <a href="#demo" class="btn btn-info" data-toggle="collapse">Show timetable</a>
-										 <br><br>
-										 <div id="demo" class="collapse">
-											 {% for file in timetable%}
-											 <embed src="{{file}}" type="application/pdf"   height="600px" width="100%">
-											 <br><br><br><br>
-											 {% endfor %}
-										 </div>
-                     </div>      
-      </div>
-                    
-			
+				<div class="container">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form action="http://localhost:5000/upload_t" method="POST" enctype="multipart/form-data">
+								<h5>Upload a Timetable</h5>
+								<input type="file" name="file" class="button" />
+								<input type="submit" class="button" /><br><br>
+							</form>
+						</div>
+					</div>
+					<h5>Uploaded Timetables :</h5>
+					<a href="#demo" class="btn btn-info" data-toggle="collapse">Show timetable</a>
+					<br><br>
+					<div id="demo" class="collapse">
+						{% for file in timetable%}
+						<embed src="{{file}}" type="application/pdf" height="600px" width="100%">
+						<br><br><br><br>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+
+
 
 			<div class="card-body" id="assignment">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form action="http://localhost:5000/upload_a" method="POST" enctype="multipart/form-data">
+							<h5>Upload a Assignment</h5>
+							<input type="file" name="file" class="button" />
+							<input type="submit" class="button" /><br><br>
+						</form>
+					</div>
+				</div>
 				<h5 class="card-title">See All the assignment</h5>
-				<form action = "http://localhost:5000/upload_a" method = "POST" 
-         												enctype = "multipart/form-data">
-         												<input type = "file" name = "file" />
-        												<input type = "submit"/>
-				</form>
 				<a href="#demo" class="btn btn-info" data-toggle="collapse">Show Assignment</a>
-						<br><br>
-						<div id="demo" class="collapse">
-							{% for file in assignment %}
-							<embed src="{{file}}" type="application/pdf"   height="600px" width="100%">
-							<br><br><br><br>
-							{% endfor %}
+				<br><br>
+				<div id="demo" class="collapse">
+					{% for file in assignment %}
+					<embed src="{{file}}" type="application/pdf" height="600px" width="100%">
+					<br><br><br><br>
+					{% endfor %}
 				</div>
 			</div>
 
 			<div class="card-body" id="syllabus">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form action="http://localhost:5000/upload_s" method="POST" enctype="multipart/form-data">
+							<h5>Upload a Syllabus</h5>
+							<input type="file" name="file" class="button" />
+							<input type="submit" class="button" /><br><br>
+						</form>
+					</div>
+				</div>
 				<h5 class="card-title">See syllabus</h5>
-				<form action = "http://localhost:5000/upload_s" method = "POST" 
-         												enctype = "multipart/form-data">
-         												<input type = "file" name = "file" />
-        												<input type = "submit"/>
-				</form>
 				<a href="#demo" class="btn btn-info" data-toggle="collapse">Show Syllabus</a>
-						<br><br>
-						<div id="demo" class="collapse">
-							{% for file in syllabus %}
-							<embed src="{{file}}" type="application/pdf"   height="600px" width="100%">
-							<br><br><br><br>
-							{% endfor %}
+				<br><br>
+				<div id="demo" class="collapse">
+					{% for file in syllabus %}
+					<embed src="{{file}}" type="application/pdf" height="600px" width="100%">
+					<br><br><br><br>
+					{% endfor %}
 				</div>
 			</div>
 
 			<div class="card-body" id="events">
 				<h5 class="card-title">See All events</h5>
 				<a href="#demo" class="btn btn-info" data-toggle="collapse">Show Events</a>
-						<br><br>
-						<div id="demo" class="collapse">
-							{% for file in events %}
-							<embed src="{{file}}" type="application/pdf"   height="600px" width="100%">
-							<br><br><br><br>
-							{% endfor %}
-						</div>
+				<br><br>
+				<div id="demo" class="collapse">
+					{% for file in events %}
+					<embed src="{{file}}" type="application/pdf" height="600px" width="100%">
+					<br><br><br><br>
+					{% endfor %}
+				</div>
 			</div>
 
 			<div class="card-body" id="committee">
@@ -151,37 +143,51 @@
 			</div>
 
 			<div class="card-body" id="notice">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form action="http://localhost:5000/upload_n" method="POST" enctype="multipart/form-data">
+							<h5>Upload a Notice</h5>
+							<input type="file" name="file" class="button" />
+							<input type="submit" class="button" /><br><br>
+						</form>
+					</div>
+				</div>
 				<h5 class="card-title">See All notice</h5>
-				<form action = "http://localhost:5000/upload_n" method = "POST" 
-         												enctype = "multipart/form-data">
-         												<input type = "file" name = "file" />
-        												<input type = "submit"/>
-				</form>
 				<a href="#demo" class="btn btn-info" data-toggle="collapse">Show Notice</a>
-						<br><br>
-						<div id="demo" class="collapse">
-							{% for file in notice %}
-							<embed src="{{file}}" type="application/pdf"   height="600px" width="100%">
-							<br><br><br><br>
-							{% endfor %}
+				<br><br>
+				<div id="demo" class="collapse">
+					{% for file in notice %}
+					<embed src="{{file}}" type="application/pdf" height="600px" width="100%">
+					<br><br><br><br>
+					{% endfor %}
 				</div>
 			</div>
 
 			<div class="card-body" id="profile">
-					<div class="container">
-					<h3>Profile Information</h3>
+				<div class="container">
+					<h3>Profile Details</h3>
 					<br>
-					{%for i in items %}
-				
-				 {% endfor %}
+					<div class="card-body-1" id="profile">
+						<table class="table">
+							<thead>
+							<tbody>
+								{% for i in items %}
+								<tr>
+									<td>{{i}}</td>
+									<td>{{items[i]}}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
 					</div>
+				</div>
 			</div>
 
 		</div>
 	</div>
 
 	</div>
-	</header>
+</header>
 
 
 {% endblock %}

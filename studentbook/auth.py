@@ -105,15 +105,19 @@ def login_student():
         if error is None:
             print("error is None")
             session.clear()
-            session['username'] = user['username']
-            session['name'] = user['names']
-            session['email'] = user['email']
-            session['class'] = user['class']
-            session['branch'] = user['branch']
-            # session['divison'] = user[divison]
-            session['contact'] = user['mobile']
+            
+            session['username'] = str(user['username'])
+            session['name'] = str(user['names'])
+            session['email'] = str(user['email'])
+            session['class'] = str(user['class'])
+            session['branch'] = str(user['branch'])
+            session['divison'] = str(user['divison'])
+            session['contact'] = str(user['mobile'])
+            session['address'] = str(user['asddress'])
+            
             print('BITCH', session['name'])
-            # return redirect(url_for('index.index_student'))
+            # return redirect
+            # (url_for('index.index_student'))
             # return redirect(url_for('index.index_student'))
             return redirect(url_for('index.index_student'))
             return None
@@ -136,6 +140,10 @@ def register_teacher():
         username = request.form['username']
         print(username)
         password = request.form['password']
+        name = request.form['name']
+        address = request.form['add']
+        branch = request.form['branch']
+        qualification = request.form['qualification']
         db = get_db()
         error = None
 
@@ -151,8 +159,10 @@ def register_teacher():
             return redirect(url_for('auth.login_teacher'))
         if error is None:
             db.execute(
-                '''INSERT INTO teacher (username,password) VALUES (?,?)''',
-                (username, generate_password_hash(password))
+                '''INSERT INTO teacher (username,password,asddress,names,branch,
+                qualification) VALUES (?,?,?,?,?,?)''',
+                (username, generate_password_hash(password),address,name,branch,
+                qualification)
             )
             db.commit()
             print("commited")
@@ -202,7 +212,17 @@ def login_teacher():
         if error is None:
             print("error is None")
             session.clear()
-            session['username'] = user['username']
+            session['username'] = str(user['username'])
+            session['address'] = str(user['asddress'])
+            session['Allocated Branch'] = str(user['Branch'])
+            session['qualification'] = str(user['qualification'])
+            session['name'] = str(user['names'])
+            
+            # session['email'] = str(user['email'])
+            #  session['class'] = str(user['class'])
+            # session['branch'] = str(user['branch'])
+            # session['divison'] = user[divison]
+            # session['contact'] = str(user['mobile'])
             error = ''
             return redirect(url_for('index.index_teacher'))
             return None
@@ -222,6 +242,14 @@ def register_comitteehead():
         username = request.form['username']
         print(username)
         password = request.form['password']
+        names = request.form['name']
+        class_co = request.form['class_co']
+        branch = request.form['branch']
+        email = request.form['email']
+        position = request.form['position']
+        comittee_name = request.form['committee']
+        mobile = request.form['mob']
+        add = request.form['add']
         db = get_db()
         error = None
 
@@ -237,8 +265,11 @@ def register_comitteehead():
             return redirect(url_for('auth.login_committee'))
         if error is None:
             db.execute(
-                'INSERT INTO comitteehead (username,password) VALUES (?,?)',
-                (username, generate_password_hash(password))
+                '''INSERT INTO comitteehead (names, class, branch, email, position,
+                comittee_name, mobile, asddress,username, password)
+                 VALUES (?,?,?,?,?,?,?,?,?,?)''',
+                (names, class_co, branch, email, position, comittee_name, 
+                mobile, add, username, generate_password_hash(password))
             )
             db.commit()
             print("commited")
@@ -288,7 +319,16 @@ def login_committee():
         if error is None:
             print("error is None")
             session.clear()
-            session['user_id'] = user['id']
+            # session['user_id'] = user['id']
+        
+            session['class'] = str(user['class'])
+            session['branch'] = str(user['branch'])
+            session['email'] = str(user['email'])
+            session['post'] = str(user['position'])
+            session['comittee name'] = str(user['comittee_name'])
+            session['mobile'] = str(user['mobile'])
+            session['address'] = str(user['asddress'])
+            session['username'] = str(user['username'])
             return redirect(url_for('index.index_comitee'))
             return None
         print("flashing now")

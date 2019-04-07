@@ -11,6 +11,8 @@ bp = Blueprint('index', __name__, url_prefix='/index')
 def index_student():
     items = None
     items = session
+    for i in items:
+        print(items[i])
     timetable = get_list_timetable()
     syllabus = get_list_syllabus()
     events = get_list_events()

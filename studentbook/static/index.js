@@ -1,10 +1,4 @@
 $(document).ready(function () {
-    $("#home-1").click(function(){
-      $('.card-body').hide();
-      $("a").removeClass('active');
-      $("#home-1").addClass('active');
-        $("#home").show();
-      });
       $("#timetable-1").click(function(){
         $('.card-body').hide();
         $("a").removeClass('active');

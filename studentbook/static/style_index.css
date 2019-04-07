@@ -28,6 +28,24 @@ body{
     margin-top: 2%;
 }
 
-#timetable.card-body,#assignment.card-body,#syllabus.card-body,#events.card-body,#committee.card-body,#notice.card-body,#profile.card-body{
+#assignment.card-body,#syllabus.card-body,#events.card-body,#committee.card-body,#notice.card-body,#profile.card-body{
     display:none;
 }
+
+.card-body-1{
+    text-transform: capitalize;
+}
+
+.button {
+    background-color: rgb(30, 193, 247);
+    border-radius: 12px;
+    border: none;
+    color:black;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
