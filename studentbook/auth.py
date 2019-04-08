@@ -144,6 +144,8 @@ def register_teacher():
         address = request.form['add']
         branch = request.form['branch']
         qualification = request.form['qualification']
+        mobile = request.form['mob']
+        email = request.form['email']
         db = get_db()
         error = None
 
@@ -160,9 +162,9 @@ def register_teacher():
         if error is None:
             db.execute(
                 '''INSERT INTO teacher (username,password,asddress,names,branch,
-                qualification) VALUES (?,?,?,?,?,?)''',
+                qualification,mobile,email) VALUES (?,?,?,?,?,?,?,?)''',
                 (username, generate_password_hash(password),address,name,branch,
-                qualification)
+                qualification,mobile,email)
             )
             db.commit()
             print("commited")
@@ -217,8 +219,9 @@ def login_teacher():
             session['Allocated Branch'] = str(user['Branch'])
             session['qualification'] = str(user['qualification'])
             session['name'] = str(user['names'])
-            
-            # session['email'] = str(user['email'])
+            session['email'] = str(user['email'])
+            session['mobile'] = str(user['mobile'])
+
             #  session['class'] = str(user['class'])
             # session['branch'] = str(user['branch'])
             # session['divison'] = user[divison]
@@ -320,7 +323,8 @@ def login_committee():
             print("error is None")
             session.clear()
             # session['user_id'] = user['id']
-        
+
+            session['name'] = str(user['names'])
             session['class'] = str(user['class'])
             session['branch'] = str(user['branch'])
             session['email'] = str(user['email'])

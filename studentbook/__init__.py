@@ -118,7 +118,7 @@ def create_app(test_config=None):
             filename = secure_filename(file.filename)
             print(filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER_E'], filename))
-            return redirect(url_for('index.index_teacher',filename=filename))
+            return redirect(url_for('index.index_comitee',filename=filename))
 
     @app.route("/upload_n",methods=["GET","POST"])
     def upload_notice():

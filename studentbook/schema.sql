@@ -36,6 +36,8 @@ CREATE TABLE teacher (
 	asddress TEXT ,
 	qualification TEXT ,
 	branch TEXT,
+	mobile TEXT,
+	email TEXT,
 	password TEXT NOT NULL
 );
 

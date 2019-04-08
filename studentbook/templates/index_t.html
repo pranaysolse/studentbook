@@ -139,7 +139,25 @@
 			</div>
 
 			<div class="card-body" id="committee">
-				<h5 class="card-title">welcome committee</h5>
+				<h5 class="card-title">See all Committee Details</h5>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Committe-name</th>
+							<th>Head</th>
+							<th>Mobile</th>
+						</tr>
+					</thead>
+					{% for comitee in comitee %}
+					<tbody>
+						<tr>
+							<td>{{ comitee[1] }}</td>
+							<td>{{ comitee[0] }}</td>
+							<td>{{ comitee[2] }}</td>
+						</tr>
+					</tbody>
+					{% endfor %}
+				</table>
 			</div>
 
 			<div class="card-body" id="notice">

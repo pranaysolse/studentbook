@@ -3,6 +3,7 @@ from flask import(
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 import os
+from studentbook.db import get_db
 
 bp = Blueprint('index', __name__, url_prefix='/index')
 
@@ -11,6 +12,11 @@ bp = Blueprint('index', __name__, url_prefix='/index')
 def index_student():
     items = None
     items = session
+    db = get_db()
+    cur = db.execute(
+                'SELECT names,comittee_name,mobile FROM comitteehead'
+            )
+    comitee = cur.fetchall()
     for i in items:
         print(items[i])
     timetable = get_list_timetable()
@@ -18,7 +24,7 @@ def index_student():
     events = get_list_events()
     notice = get_list_notice()
     assignment = get_list_assignment()
-    return render_template('index.html', items=items,
+    return render_template('index.html', items=items,comitee=comitee,
                             timetable=timetable,
                             syllabus=syllabus,
                             events=events,
@@ -47,12 +53,17 @@ def index_comitee():
 def index_teacher():
     items = None
     items = session
+    db = get_db()
+    cur = db.execute(
+                'SELECT names,comittee_name,mobile FROM comitteehead'
+            )
+    comitee = cur.fetchall()
     timetable = get_list_timetable()
     syllabus = get_list_syllabus()
     events = get_list_events()
     notice = get_list_notice()
     assignment = get_list_assignment()
-    return render_template('index_t.html', items=items , 
+    return render_template('index_t.html', items=items ,comitee=comitee, 
                             timetable=timetable,
                             syllabus=syllabus,
                             events=events,
