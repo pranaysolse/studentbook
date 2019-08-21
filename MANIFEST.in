@@ -1,0 +1,4 @@
+include studentbook/schema.sql
+graft studentbook/static
+graft studentbook/templates
+global-exclude *.pyc

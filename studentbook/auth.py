@@ -8,14 +8,15 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from studentbook.db import get_db
 from studentbook import forms
-from studentbook.index import *
-
+# from studentbook.index import *
+from studentbook import index
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
 @bp.route('/register_s', methods=('GET', 'POST'))
 def register_student():
     form = forms.RegisterFormSt()
+    error = None
     if request.method == 'POST':
         print(str(request.data))
         username = request.form['username']
@@ -45,7 +46,8 @@ def register_student():
         ).fetchone() is not None:
             error = f'user {username} is already registered'
             print(error)
-            return redirect(url_for('auth.login_student'))
+            flash(error)
+            # return redirect(url_for('auth.login_student'))
         if error is None:
             db.execute(
                 '''INSERT INTO student (names, class, branch, divison,email,mobile,
@@ -62,7 +64,8 @@ def register_student():
         if error is not None:
             print(error)
     return render_template("register_student.html",
-                           title="Register-Student", form=form)
+                           title="Register-Student",
+                           form=form, error=error)
 
 
 @bp.route('/login_s', methods=('GET', 'POST'))
@@ -73,13 +76,13 @@ def login_student():
         flash("login form")
         print(str(request.data))
         username = request.form['username']
+        print(username)
         password = request.form['password']
+        print(password)
         user_type = request.form['user_type']
         db = get_db()
-
         if username is None:
             error = 'username is required '
-
         elif password is None:
             error = 'password is required'
         elif user_type is None:
@@ -102,10 +105,12 @@ def login_student():
         elif not check_password_hash(user['password'], password):
             error = 'Incorrect password'
         print(error)
+        # if error is None that means that there is no error and user contains
+        # dict which ha skey value pair so we need to create a session for it
+        #  and store this values in it
         if error is None:
             print("error is None")
             session.clear()
-            
             session['username'] = str(user['username'])
             session['name'] = str(user['names'])
             session['email'] = str(user['email'])
@@ -113,8 +118,7 @@ def login_student():
             session['branch'] = str(user['branch'])
             session['divison'] = str(user['divison'])
             session['contact'] = str(user['mobile'])
-            session['address'] = str(user['asddress'])
-            
+            session['address'] = str(user['asddress']
             print('BITCH', session['name'])
             # return redirect
             # (url_for('index.index_student'))
@@ -123,7 +127,6 @@ def login_student():
             return None
         print("flashing now")
         flash(error)
-
     return render_template('login.html', title='login student', form=form,
                            error=error)
 
@@ -134,7 +137,7 @@ def login_student():
 @bp.route('/register_t', methods=('GET', 'POST'))
 def register_teacher():
     form = forms.RegisterFormte()
-
+    error = None
     if request.method == 'POST':
         print(str(request.data))
         username = request.form['username']
@@ -158,7 +161,11 @@ def register_teacher():
         ).fetchone() is not None:
             error = f'user {username} is already registered'
             print(error)
-            return redirect(url_for('auth.login_teacher'))
+            flash(error)
+            return render_template("register_teacher.html",
+                                   title="Register-teacher",
+                                   form=form, error=error)
+            # return redirect(url_for('auth.login_teacher'))
         if error is None:
             db.execute(
                 '''INSERT INTO teacher (username,password,asddress,names,branch,
@@ -174,7 +181,7 @@ def register_teacher():
         if error is not None:
             print(error)
     return render_template("register_teacher.html", title="Register-teacher",
-                           form=form)
+                           form=form, error=error)
 
 
 @bp.route('/login_t', methods=('GET', 'POST'))
@@ -221,7 +228,6 @@ def login_teacher():
             session['name'] = str(user['names'])
             session['email'] = str(user['email'])
             session['mobile'] = str(user['mobile'])
-
             #  session['class'] = str(user['class'])
             # session['branch'] = str(user['branch'])
             # session['divison'] = user[divison]
@@ -240,6 +246,7 @@ def login_teacher():
 @bp.route('/register_c', methods=('GET', 'POST'))
 def register_comitteehead():
     form = forms.RegisterFormco()
+    error = None
     if request.method == 'POST':
         print(str(request.data))
         username = request.form['username']
@@ -265,7 +272,12 @@ def register_comitteehead():
         ).fetchone() is not None:
             error = f'user {username} is already registered'
             print(error)
-            return redirect(url_for('auth.login_committee'))
+            flash(error)
+            # return redirect(url_for('auth.login_committee'))
+            return render_template("register_committee.html",
+                                   title="Register-teacher", form=form,
+                                   error=error)
+
         if error is None:
             db.execute(
                 '''INSERT INTO comitteehead (names, class, branch, email, position,
@@ -281,8 +293,10 @@ def register_comitteehead():
         flash(error)
         if error is not None:
             print(error)
+            flash(error)
     return render_template("register_committee.html",
-                           title="Register-teacher", form=form)
+                           title="Register-teacher", form=form,
+                           error=error)
 
 
 @bp.route('/login_c', methods=('GET', 'POST'))
@@ -323,7 +337,6 @@ def login_committee():
             print("error is None")
             session.clear()
             # session['user_id'] = user['id']
-
             session['name'] = str(user['names'])
             session['class'] = str(user['class'])
             session['branch'] = str(user['branch'])
