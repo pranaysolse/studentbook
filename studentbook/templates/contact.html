@@ -1,42 +1,44 @@
 {% extends "layout.html" %}
-	{% block head %}
-		{{super()}}
-		<link rel="stylesheet" type="text/css" href="/static/style_contact.css">
-	{% endblock %}
+{% block head %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="/static/style_contact.css">
+{% endblock %}
 {% block body %}
-	<header>
-		<div class="main">
-			<div class="logo">
-				<img src="/static/images/Logo.png">
-			</div>
-			<ul>
-				<li ><a href="http://localhost:5000/">Home</a></li>
-				<li ><a href="http://localhost:5000/about">About</a></li>
-				<li class="active"><a href="#">Contact Us</a></li>
-				<li><a href="http://localhost:5000/">Login</a></li>
-			</ul>
+<header>
+	<div class="main">
+		<div class="logo">
+			<img src="/static/images/Logo.png">
 		</div>
-		
-	</header>
-	<footer>
-			<div class="card">
-					<h4 class="card-header" >Contact Us </h4>
-					<div class="card-body">
-							<form>
-								<div class="form-group">
-										<input type="text" class="form-control" placeholder="Full name">
-								</div>
-								<div class="form-group">
-									  
-									  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-									  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-								</div>
-								<div class="form-group">
-										<textarea name = "comment" placeholder = "Message" id = "comment"></textarea>
-								</div>
-									<button type="submit" class="btn btn-primary">Submit</button>
-							</form>
-					</div>
-			</div>
-	</footer>
+		<ul>
+			<li><a href="http://localhost:5000/">Home</a></li>
+			<li><a href="http://localhost:5000/about">About</a></li>
+			<li class="active"><a href="#">Contact Us</a></li>
+			<li><a href="http://localhost:5000/">Login</a></li>
+		</ul>
+	</div>
+
+</header>
+<footer>
+	<div class="card">
+		<h4 class="card-header">Contact Us </h4>
+		<div class="card-body">
+			<form>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Full name">
+				</div>
+				<div class="form-group">
+
+					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+						placeholder="Enter email">
+					<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+						else.</small>
+				</div>
+				<div class="form-group">
+					<textarea name="comment" placeholder="Message" id="comment"></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+</footer>
 {% endblock %}

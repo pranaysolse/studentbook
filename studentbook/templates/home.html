@@ -1,38 +1,40 @@
 {% extends "layout.html" %}
-	{% block head %}
-		{{super()}}
-		<link rel="stylesheet" type="text/css" href="/static/style_home.css" >
-		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
-		<meta name="viewport" content="width=device-width"/>
+{% block head %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="/static/style_home.css">
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+<meta name="viewport" content="width=device-width" />
 
-	{% endblock %}
+{% endblock %}
 {% block body %}
-	<header>
-		<div class="main">
-			<div class="logo">
-				<img src="/static/images/Logo.png">
-			</div>
-			<ul>
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="http://localhost:5000/about">About</a></li>
-				<li><a href="http://localhost:5000/contact">Contact Us</a></li>
-			</ul>
-			<ul>
-				<li><a href="http://localhost:5000/auth/login_s">Student Login</a></li>
-				<li><a href="http://localhost:5000/auth/login_t">Teacher Login</a></li>
-				<li><a href="http://localhost:5000/auth/login_c">Comitee Login</a></li>	
-			</ul>	
+<header>
+	<div class="main">
+		<div class="logo">
+			<img src="/static/images/Logo.png">
 		</div>
-		<div class="title">
-			<h1>Welcome To Student Book</h1>
-			<h2><pre class="tab">    Register As    </pre></h2>
-			<hr class="style1">
-		</div>
-		<ul id="select_option">
-				<li><a href="http://localhost:5000/auth/register_s">Student</a></li>
-				<li><a href="http://localhost:5000/auth/register_t">Teacher</a></li>
-				<li><a href="http://localhost:5000/auth/register_c">Committee</a></li>
+		<ul>
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="http://localhost:5000/about">About</a></li>
+			<li><a href="http://localhost:5000/contact">Contact Us</a></li>
 		</ul>
-	</header>
+		<ul>
+			<li><a href="http://localhost:5000/auth/login_s">Student Login</a></li>
+			<li><a href="http://localhost:5000/auth/login_t">Teacher Login</a></li>
+			<li><a href="http://localhost:5000/auth/login_c">Comitee Login</a></li>
+		</ul>
+	</div>
+	<div class="title">
+		<h1>Welcome To Student Book</h1>
+		<h2>
+			<pre class="tab">    Register As    </pre>
+		</h2>
+		<hr class="style1">
+	</div>
+	<ul id="select_option">
+		<li><a href="http://localhost:5000/auth/register_s">Student</a></li>
+		<li><a href="http://localhost:5000/auth/register_t">Teacher</a></li>
+		<li><a href="http://localhost:5000/auth/register_c">Committee</a></li>
+	</ul>
+</header>
 {% endblock %}

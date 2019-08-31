@@ -21,9 +21,6 @@
 	crossorigin="anonymous"></script>
 
 <script src="/static/index.js"></script>
-<style>
-	
-</style>
 {% endblock %}
 {% block body %}
 <header>
@@ -31,11 +28,9 @@
 
 		<div class="logo">
 			<img src="/static/images/Logo.png" height="100" width="160">
-
 			<button type="button" class="btn btn-primary"
 				onclick="location.href='http://localhost:5000/'">Logout</button>
 		</div>
-		
 
 		<div class="card text-center">
 			<div class="card-header">
@@ -65,19 +60,40 @@
 			</div>
 
 			<div class="card-body" id="timetable">
-				<h5 class="card-title">List of timetables</h5>
-				<a href="#demo" class="btn btn-info" data-toggle="collapse">Show timetable</a>
-				<br><br>
-				<div id="demo" class="collapse">
-					{% for file in timetable %}
-					<embed src="{{file}}" type="application/pdf" height="600px" width="100%">
-					<br><br><br><br>
-					{% endfor %}
+				<div class="container">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form action="http://localhost:5000/upload_t" method="POST" enctype="multipart/form-data">
+								<h5>Upload a Timetable</h5>
+								<input type="file" name="file" class="button" />
+								<input type="submit" class="button" /><br><br>
+							</form>
+						</div>
+					</div>
+					<h5>Uploaded Timetables :</h5>
+					<a href="#demo" class="btn btn-info" data-toggle="collapse">Show timetable</a>
+					<br><br>
+					<div id="demo" class="collapse">
+						{% for file in timetable%}
+						<embed src="{{file}}" type="application/pdf" height="600px" width="100%">
+						<br><br><br><br>
+						{% endfor %}
+					</div>
 				</div>
-
 			</div>
 
+
+
 			<div class="card-body" id="assignment">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form action="http://localhost:5000/upload_a" method="POST" enctype="multipart/form-data">
+							<h5>Upload a Assignment</h5>
+							<input type="file" name="file" class="button" />
+							<input type="submit" class="button" /><br><br>
+						</form>
+					</div>
+				</div>
 				<h5 class="card-title">See All the assignment</h5>
 				<a href="#demo" class="btn btn-info" data-toggle="collapse">Show Assignment</a>
 				<br><br>
@@ -90,7 +106,16 @@
 			</div>
 
 			<div class="card-body" id="syllabus">
-				<h5 class="card-title">See the syllabus</h5>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form action="http://localhost:5000/upload_s" method="POST" enctype="multipart/form-data">
+							<h5>Upload a Syllabus</h5>
+							<input type="file" name="file" class="button" />
+							<input type="submit" class="button" /><br><br>
+						</form>
+					</div>
+				</div>
+				<h5 class="card-title">See syllabus</h5>
 				<a href="#demo" class="btn btn-info" data-toggle="collapse">Show Syllabus</a>
 				<br><br>
 				<div id="demo" class="collapse">
@@ -115,7 +140,7 @@
 
 			<div class="card-body" id="committee">
 				<h5 class="card-title">See all Committee Details</h5>
-				<table class="table" id="tt">
+				<table class="table">
 					<thead>
 						<tr>
 							<th>Committe-name</th>
@@ -136,6 +161,15 @@
 			</div>
 
 			<div class="card-body" id="notice">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form action="http://localhost:5000/upload_n" method="POST" enctype="multipart/form-data">
+							<h5>Upload a Notice</h5>
+							<input type="file" name="file" class="button" />
+							<input type="submit" class="button" /><br><br>
+						</form>
+					</div>
+				</div>
 				<h5 class="card-title">See All notice</h5>
 				<a href="#demo" class="btn btn-info" data-toggle="collapse">Show Notice</a>
 				<br><br>
@@ -148,13 +182,12 @@
 			</div>
 
 			<div class="card-body" id="profile">
-
 				<div class="container">
 					<h3>Profile Details</h3>
 					<br>
 					<div class="card-body-1" id="profile">
 						<table class="table">
-							<thead></thead>
+							<thead>
 							<tbody>
 								{% for i in items %}
 								<tr>

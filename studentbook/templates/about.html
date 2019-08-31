@@ -1,50 +1,64 @@
 {% extends "layout.html" %}
-	{% block head %}
-		{{super()}}
-		<link rel="stylesheet" type="text/css" href="/static/style_about.css">
+{% block head %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="/static/style_about.css">
 
-	{% endblock %}
+{% endblock %}
 {% block body %}
-	<header>
-		<div class="main">
-			<div class="logo">
-				<img src="/static/images/Logo.png">
-			</div>
-			<ul>
-				<li ><a href="http://localhost:5000/">Home</a></li>
-				<li class="active"><a href="#">About</a></li>
-				<li><a href="http://localhost:5000/contact">Contact Us</a></li>
-				<li><a href="http://localhost:5000/">Login</a></li>
-			</ul>
+<header>
+	<div class="main">
+		<div class="logo">
+			<img src="/static/images/Logo.png">
 		</div>
-	</header>
-	<footer>
-		<div class="wrapper">
-			<div class="section-header">
-				<h2>Our Team Members</h2>
-			</div>
-			<div class="team-member">
-				<img src="/static/images/pranay.jpg"  height="200">
-				<h3>Pranay Solse</h3>
-			</div>
-			<div class="team-member">
-				<img src="/static/images/mayank.jpg"  height="200">
-				<h3>Mayank Tripathi</h3>
-			</div>
-			<div class="team-member">
-				<img src="/static/images/aman.jpg"  height="200">
-				<h3>Aman Singh</h3>
-			</div>
+		<ul>
+			<li><a href="http://localhost:5000/">Home</a></li>
+			<li class="active"><a href="#">About</a></li>
+			<li><a href="http://localhost:5000/contact">Contact Us</a></li>
+			<li><a href="http://localhost:5000/">Login</a></li>
+		</ul>
+	</div>
+</header>
+<footer>
+	<div class="wrapper">
+		<div class="section-header">
+			<h2>Our Team Members</h2>
+		</div>
+		<div class="team-member">
+			<img src="/static/images/pranay.jpg" height="200">
+			<h3>Pranay Solse</h3>
+		</div>
+		<div class="team-member">
+			<img src="/static/images/mayank.jpg" height="200">
+			<h3>Mayank Tripathi</h3>
+		</div>
+		<div class="team-member">
+			<img src="/static/images/aman.jpg" height="200">
+			<h3>Aman Singh</h3>
+		</div>
 
-		</div>
-			<div class="container">
+	</div>
+	<div class="container">
 		<h1>About the website</h1>
 		<hr class="striped-border">
-		<p>To provide a centralized platform for the students and staff we designed an online portal named “Student Book” .Student book is basic tool which can be used by both student as well as the staff .It is an  interactive application/website in which various tools and online services are available which can be utilized to ease down college work .We can login as Teacher ,Student or Committee head as per our requirement .Various features of this portal which includes Timetable section ,Submission section ,Syllabus information ,Assignment section ,Event notifier ,Notice section and Committee section .Timetable section basically includes details about timetable and faculty wise lecture details .Teachers can modify the access or modify the timetable by simply longing in their account .In Submission and Assignment section students can we view all kinds of assignment and can also submit their final submission .Students get notify if they do not submit after the due date .Syllabus information contains details of the syllabus for different branches .Event notifier basically notifies about the various event that are going on in the college . Notice section displays all kinds of notices that are important and need to be address to the student .Committee section mainly consist of list of all kind of working committee that are present in the college .Committee head can login can access and modify the data regarding their respective committee .Also all kinds of form are available which can be access by all the students in the college.
-		
+		<p>To provide a centralized platform for the students and staff we designed an online portal named “Student
+			Book” .Student book is basic tool which can be used by both student as well as the staff .It is an
+			interactive application/website in which various tools and online services are available which can be
+			utilized to ease down college work .We can login as Teacher ,Student or Committee head as per our
+			requirement .Various features of this portal which includes Timetable section ,Submission section ,Syllabus
+			information ,Assignment section ,Event notifier ,Notice section and Committee section .Timetable section
+			basically includes details about timetable and faculty wise lecture details .Teachers can modify the access
+			or modify the timetable by simply longing in their account .In Submission and Assignment section students
+			can we view all kinds of assignment and can also submit their final submission .Students get notify if they
+			do not submit after the due date .Syllabus information contains details of the syllabus for different
+			branches .Event notifier basically notifies about the various event that are going on in the college .
+			Notice section displays all kinds of notices that are important and need to be address to the student
+			.Committee section mainly consist of list of all kind of working committee that are present in the college
+			.Committee head can login can access and modify the data regarding their respective committee .Also all
+			kinds of form are available which can be access by all the students in the college.
+
 		</p>
 		<hr class="striped-border">
 	</div>
-	</footer>
+</footer>
 
 {% endblock %}

@@ -19,20 +19,25 @@ CREATE TABLE comitteehead (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	username TEXT UNIQUE NOT NULL,
 	password TEXT ,
-	address TEXT ,
+	asddress TEXT ,
+	names TEXT,
+	position TEXT ,
+	comittee_name TEXT ,
+	mobile TEXT ,
+	email TEXT ,
 	class TEXT ,
-	branch TEXT ,
-	year TEXT ,
-	role TEXT 
+	branch TEXT 
 );
 
 CREATE TABLE teacher (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	username TEXT UNIQUE NOT NULL,
-	address TEXT ,
-	designation TEXT ,
+	names TEXT ,
+	asddress TEXT ,
 	qualification TEXT ,
-	subject TEXT ,
+	branch TEXT,
+	mobile TEXT,
+	email TEXT,
 	password TEXT NOT NULL
 );
 
