@@ -7,3 +7,4 @@ MarkupSafe==1.1.1
 Werkzeug==0.14.1
 WTForms==2.2.1
 Flask-uploads==0.2.1
+gunicorn==19.9.0

@@ -118,7 +118,7 @@ def login_student():
             session['branch'] = str(user['branch'])
             session['divison'] = str(user['divison'])
             session['contact'] = str(user['mobile'])
-            session['address'] = str(user['asddress']
+            session['address'] = str(user['asddress'])
             print('BITCH', session['name'])
             # return redirect
             # (url_for('index.index_student'))
