@@ -59,10 +59,10 @@ ul li.active a{
  }
 
  .title h1{
- 	color: white;
- 	font-size: 50px;
+ 	color: white; 
+ 	font-size: 30px;
  	font-style: oblique;
-
+	text-align: center;
  }
 
  .tab{
@@ -100,3 +100,7 @@ h2{
 hr.style1{
 	border-top: 5px solid white;
 }
+
+@media screen and (min-width: 960px) {
+	
+  }	
